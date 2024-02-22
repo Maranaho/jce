@@ -10,7 +10,6 @@ $nflxActive: #b30912;
 $contentWidth: 1000px;
 $txt: #fff;
 $bgColor: #000;
-// $motionCurve: cubic-bezier(0.5, 0, 0.08, 0.99);
 $motionCurve: cubic-bezier(0.61, 0, 0.02, 1.17);
 
 //Sections
@@ -173,7 +172,7 @@ button {cursor: pointer}
         justify-content: center;
         align-items: center;
         border-radius: 4px;
-        transition: .9s $motionCurve 1s;
+        transition: .9s $motionCurve .7s;
         cursor: pointer;
         &:not(:last-child){border-right: 3px solid $bgColor}
         img, h2, video{ position: absolute }

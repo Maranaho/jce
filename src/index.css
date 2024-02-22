@@ -152,7 +152,7 @@ button {
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  transition: 0.9s cubic-bezier(0.61, 0, 0.02, 1.17) 1s;
+  transition: 0.9s cubic-bezier(0.61, 0, 0.02, 1.17) 0.7s;
   cursor: pointer;
 }
 .Movies > article:not(:last-child) {
