@@ -1,7 +1,7 @@
 
 const Frontend = ()=>(
     <section className="Frontend">
-        Frontend
+        Hi
     </section>
 )
 
