@@ -1,12 +1,12 @@
 import Header from './Header'
 import MotionTech from './MotionTech'
-import Frontend from './Frontend'
+import Movies from './Movies'
 
 const Demo = ()=>(
     <div className="Demo">
         <Header/>
         <MotionTech/>
-        <Frontend/>
+        <Movies/>
     </div>
 )
 
