@@ -6,7 +6,6 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 17px;
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 body.noScroll {
@@ -112,7 +111,6 @@ button {
   box-sizing: border-box;
   justify-content: center;
   border-top: 6px solid #0E0D11;
-  scroll-snap-align: start;
 }
 .Movies.watching > article.watching {
   height: 100vh;
@@ -132,6 +130,7 @@ button {
 }
 .Movies:not(.watching) article:not(.shrunk):not(.active):hover {
   width: 500px;
+  transition-delay: 0s;
 }
 .Movies:not(.watching) article:not(.shrunk):not(.active):hover img, .Movies:not(.watching) article:not(.shrunk):not(.active):hover h2 {
   opacity: 0;
@@ -153,7 +152,7 @@ button {
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  transition: 0.9s cubic-bezier(0.82, 0.01, 0.01, 1);
+  transition: 0.9s cubic-bezier(0.61, 0, 0.02, 1.17) 1s;
   cursor: pointer;
 }
 .Movies > article:not(:last-child) {
@@ -181,6 +180,6 @@ button {
   filter: brightness(0.6);
 }
 .Movies > article video {
-  transition: 0.9s cubic-bezier(0.82, 0.01, 0.01, 1);
+  transition: 0.9s cubic-bezier(0.61, 0, 0.02, 1.17);
   width: 100vw;
 }/*# sourceMappingURL=index.css.map */

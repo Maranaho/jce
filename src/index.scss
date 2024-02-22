@@ -10,7 +10,8 @@ $nflxActive: #b30912;
 $contentWidth: 1000px;
 $txt: #fff;
 $bgColor: #000;
-$motionCurve: cubic-bezier(0.82, 0.01, 0.01, 1);
+// $motionCurve: cubic-bezier(0.5, 0, 0.08, 0.99);
+$motionCurve: cubic-bezier(0.61, 0, 0.02, 1.17);
 
 //Sections
 $sectionBorderColor: #0E0D11;
@@ -43,7 +44,6 @@ body {
     font-family: $fontFamily;
     font-weight: $light;
     font-size: $fontSize;
-    scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     &.noScroll{ overflow: hidden }
 }
@@ -130,7 +130,6 @@ button {cursor: pointer}
     box-sizing: border-box;
     justify-content: center;
     border-top: $sectionBorderWidth solid $sectionBorderColor;
-    scroll-snap-align: start;
 
     &.watching {
         > article {
@@ -154,6 +153,7 @@ button {cursor: pointer}
     }
     &:not(.watching) article:not(.shrunk):not(.active):hover{
         width: 500px;
+        transition-delay: 0s;
         img,h2{opacity: 0}
     }
     .closeMovie {
@@ -173,7 +173,7 @@ button {cursor: pointer}
         justify-content: center;
         align-items: center;
         border-radius: 4px;
-        transition: .9s $motionCurve;
+        transition: .9s $motionCurve 1s;
         cursor: pointer;
         &:not(:last-child){border-right: 3px solid $bgColor}
         img, h2, video{ position: absolute }
