@@ -5,10 +5,12 @@ $nflx: #E50914;
 $nflxHover: #ca121b;
 $nflxActive: #b30912;
 
+
 //Globals
 $contentWidth: 1000px;
 $txt: #fff;
 $bgColor: #000;
+$motionCurve: cubic-bezier(0.82, 0.01, 0.01, 1);
 
 //Sections
 $sectionBorderColor: #0E0D11;
@@ -41,7 +43,12 @@ body {
     font-family: $fontFamily;
     font-weight: $light;
     font-size: $fontSize;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    &.noScroll{ overflow: hidden }
 }
+
+button {cursor: pointer}
 
 .link {
     color: $txt;
@@ -69,7 +76,6 @@ body {
 }
 
 .btn {
-    cursor: pointer;
     font-family: "Roboto", sans-serif;
     font-weight: $medium;
     color: $txt;
@@ -90,6 +96,7 @@ body {
         &:active{ background:$secondaryBtnActive}
     }
 }
+
 
 .HireBtns {
     display: inline-flex;
@@ -115,7 +122,82 @@ body {
     }
 }
 
-.Frontend {
+.Movies {
+    height: 100vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: center;
     border-top: $sectionBorderWidth solid $sectionBorderColor;
-    height: calc(100vh - $sectionBorderWidth);
+    scroll-snap-align: start;
+
+    &.watching {
+        > article {
+            &.watching {
+                height: 100vh;
+                width: 100vw;
+                video {
+                    width: 125vw;
+                }
+                img,h2{
+                    opacity: 0;
+                }
+            }
+            &:not(.watching) {
+                height: 100vh;
+                width: 0;
+                border-width: 0;
+                opacity: 0;
+            }
+        }
+    }
+    &:not(.watching) article:not(.shrunk):not(.active):hover{
+        width: 500px;
+        img,h2{opacity: 0}
+    }
+    .closeMovie {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 1;
+        background: none;
+        border: none;
+    }
+    > article {
+        width: 120px;
+        height: 600px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        transition: .9s $motionCurve;
+        cursor: pointer;
+        &:not(:last-child){border-right: 3px solid $bgColor}
+        img, h2, video{ position: absolute }
+        h2 {
+            transition: .7s ease;
+            font-size: .9em;
+            opacity: .8;
+            font-weight: $regular;
+            text-align: center;
+            width: 120px;
+            box-sizing: border-box;
+            padding: 20px;
+            letter-spacing: 1px;
+            line-height: 1.5em;
+        }
+        img {
+            opacity: 1;
+            transition: 1.5s ease;
+            height: 600px;
+            filter: brightness(.6);
+        }
+        video {
+            transition: .9s $motionCurve;
+            width: 100vw;
+        }
+    }
 }

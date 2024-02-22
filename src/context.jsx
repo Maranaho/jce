@@ -2,7 +2,8 @@ import React from "react"
 
 let initialNFLXState = {
   likelyhood:1,
-  linkedinUrl:"https://www.linkedin.com/in/maranaho-n-guessan-b7a85511b/"
+  linkedinUrl:"https://www.linkedin.com/in/maranaho-n-guessan-b7a85511b/",
+  watching: -1
 }
 
 const NFLXContext = React.createContext()
@@ -10,6 +11,12 @@ const NFLXContext = React.createContext()
 function ttReducer(state, action) {
   switch (action.type) {
 
+
+    case 'SET_WATCHING': {
+      let SET_WATCHING = {...state}
+      SET_WATCHING.watching = action.payload
+      return SET_WATCHING
+    }
 
     case 'SET_LIKELYHOOD': {
       let SET_LIKELYHOOD = {...state}

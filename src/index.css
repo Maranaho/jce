@@ -6,6 +6,15 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 17px;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+body.noScroll {
+  overflow: hidden;
+}
+
+button {
+  cursor: pointer;
 }
 
 .link {
@@ -36,7 +45,6 @@ body {
 }
 
 .btn {
-  cursor: pointer;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   color: #fff;
@@ -96,7 +104,83 @@ body {
   line-height: 1.4em;
 }
 
-.Frontend {
+.Movies {
+  height: 100vh;
+  display: flex;
+  position: relative;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
   border-top: 6px solid #0E0D11;
-  height: calc(100vh - 6px);
+  scroll-snap-align: start;
+}
+.Movies.watching > article.watching {
+  height: 100vh;
+  width: 100vw;
+}
+.Movies.watching > article.watching video {
+  width: 125vw;
+}
+.Movies.watching > article.watching img, .Movies.watching > article.watching h2 {
+  opacity: 0;
+}
+.Movies.watching > article:not(.watching) {
+  height: 100vh;
+  width: 0;
+  border-width: 0;
+  opacity: 0;
+}
+.Movies:not(.watching) article:not(.shrunk):not(.active):hover {
+  width: 500px;
+}
+.Movies:not(.watching) article:not(.shrunk):not(.active):hover img, .Movies:not(.watching) article:not(.shrunk):not(.active):hover h2 {
+  opacity: 0;
+}
+.Movies .closeMovie {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 1;
+  background: none;
+  border: none;
+}
+.Movies > article {
+  width: 120px;
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  transition: 0.9s cubic-bezier(0.82, 0.01, 0.01, 1);
+  cursor: pointer;
+}
+.Movies > article:not(:last-child) {
+  border-right: 3px solid #000;
+}
+.Movies > article img, .Movies > article h2, .Movies > article video {
+  position: absolute;
+}
+.Movies > article h2 {
+  transition: 0.7s ease;
+  font-size: 0.9em;
+  opacity: 0.8;
+  font-weight: 400;
+  text-align: center;
+  width: 120px;
+  box-sizing: border-box;
+  padding: 20px;
+  letter-spacing: 1px;
+  line-height: 1.5em;
+}
+.Movies > article img {
+  opacity: 1;
+  transition: 1.5s ease;
+  height: 600px;
+  filter: brightness(0.6);
+}
+.Movies > article video {
+  transition: 0.9s cubic-bezier(0.82, 0.01, 0.01, 1);
+  width: 100vw;
 }/*# sourceMappingURL=index.css.map */

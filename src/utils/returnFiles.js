@@ -18,7 +18,7 @@ import thecircleThumb from "../assets/thumbs/thecircle.png"
 import ghostintheshellThumb from "../assets/thumbs/ghostintheshell.png"
 import looperThumb from "../assets/thumbs/looper.png"
 import spidermanThumb from "../assets/thumbs/spiderman.png"
-import strangerthingsThumb from "../assets/thumbs/strangerthings.png"
+import strangerthingsThumb from "../assets/thumbs/strangerthings-1.png"
 import justiceleagueThumb from "../assets/thumbs/justiceleague.png"
 import lockeandkeyThumb from "../assets/thumbs/lockeandkey.png"
 
@@ -69,4 +69,5 @@ const files = {
     lockeandkeyScreen,
 }
 
-export { files, movies }
+const offsets = [ 0, 1, 2 , -1, 0, 1, -.5, 0, 2 ]
+export { files, movies,offsets  }
