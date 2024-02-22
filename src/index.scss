@@ -1,14 +1,121 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+//Theme
+$nflx: #E50914;
+$nflxHover: #ca121b;
+$nflxActive: #b30912;
+
+//Globals
+$contentWidth: 1000px;
+$txt: #fff;
+$bgColor: #000;
+
+//Sections
+$sectionBorderColor: #0E0D11;
+$sectionBorderWidth: 6px;
+
+//Typography
+$fontFamily: "Roboto", sans-serif;
+$fontSize: 17px;
+$light: 300;
+$regular: 400;
+$medium: 500;
+$bold: 700;
+$heavy: 900;
+
+//Animation
+$riveArtboardWidth:500px;
+
+//Buttons
+$secondaryBtnStroke: #5A5A5A;
+$secondaryBtnBG: rgba(255,255,255,0);
+$secondaryBtnHover: rgba(255,255,255,.07);
+$secondaryBtnActive: rgba(255,255,255,.1);
+$btnRadius: 5px;
+$btnSpacing: 10px;
+
 body {
     margin: 0;
-    background: #000;
-    color: #fff;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    background: $bgColor;
+    color: $txt;
+    font-family: $fontFamily;
+    font-weight: $light;
+    font-size: $fontSize;
+}
+
+.link {
+    color: $txt;
+    &:hover{ opacity: .7 }
 }
 
 .riveComponent {
-    width: 600px;
-    height: 600px;
+    width: $riveArtboardWidth;
+    height: $riveArtboardWidth;
+}
+
+.Header {
+    background: url("./assets/images/bg.png") no-repeat center 0;
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+.TopNav {
+    width: $contentWidth;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-weight: $medium;
+    color: $txt;
+    background: $nflx;
+    border: 1px solid $nflx;
+    padding: 7px 17px;
+    border-radius: $btnRadius;
+    display: flex;
+    align-items: center;
+    font-size: .9em;
+    &:hover{ background: $nflxHover}
+    &:active{ background: $nflxActive}
+    > img { margin-right: $btnSpacing}
+    &.secondary{
+        background: $secondaryBtnBG;
+        border: 1px solid $secondaryBtnStroke;
+        &:hover{ background: $secondaryBtnHover}
+        &:active{ background:$secondaryBtnActive}
+    }
+}
+
+.HireBtns {
+    display: inline-flex;
+    .btn:not(:last-child){ margin-right: $btnSpacing}
+}
+
+.MotionTech {
+    width: $contentWidth;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70vh;
+    article{ flex:1 }
+    h1 {
+        font-size: 2.5em;
+        font-weight: $heavy;
+    }
+    p {
+        margin: 30px 0 60px;
+        letter-spacing: .5px;
+        line-height: 1.4em;
+    }
+}
+
+.Frontend {
+    border-top: $sectionBorderWidth solid $sectionBorderColor;
+    height: calc(100vh - $sectionBorderWidth);
 }

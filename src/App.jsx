@@ -1,10 +1,10 @@
 import { HashRouter } from "react-router-dom"
 
-import NFLX from './components/NFLX'
+import Nflx from './components/Nflx'
 
 const App = ()=>(
   <HashRouter>
-      <NFLX />
+      <Nflx />
   </HashRouter>
 )
 

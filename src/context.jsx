@@ -1,7 +1,8 @@
 import React from "react"
 
 let initialNFLXState = {
-
+  likelyhood:1,
+  linkedinUrl:"https://www.linkedin.com/in/maranaho-n-guessan-b7a85511b/"
 }
 
 const NFLXContext = React.createContext()
@@ -10,10 +11,10 @@ function ttReducer(state, action) {
   switch (action.type) {
 
 
-    case 'YO': {
-      let YO = {...state}
-      YO.pendingCopy = action.payload
-      return YO
+    case 'SET_LIKELYHOOD': {
+      let SET_LIKELYHOOD = {...state}
+      SET_LIKELYHOOD.likelyhood = action.payload
+      return SET_LIKELYHOOD
     }
 
 
