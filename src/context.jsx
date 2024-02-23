@@ -3,7 +3,8 @@ import React from "react"
 let initialNFLXState = {
   likelyhood:1,
   linkedinUrl:"https://www.linkedin.com/in/maranaho-n-guessan-b7a85511b/",
-  watching: -1
+  watching: -1,
+  moviesAreVisible: false
 }
 
 const NFLXContext = React.createContext()
@@ -11,6 +12,12 @@ const NFLXContext = React.createContext()
 function ttReducer(state, action) {
   switch (action.type) {
 
+
+    case 'MOVIES_ARE_VISIBLE': {
+      let MOVIES_ARE_VISIBLE = {...state}
+      MOVIES_ARE_VISIBLE.moviesAreVisible = action.payload
+      return MOVIES_ARE_VISIBLE
+    }
 
     case 'SET_WATCHING': {
       let SET_WATCHING = {...state}

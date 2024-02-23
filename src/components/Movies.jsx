@@ -1,53 +1,64 @@
-import { useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useNFLXState } from '../context'
-import { files, movies,offsets } from "../utils/returnFiles"
+import { movies } from "../utils/returnFiles"
+import Movie from './Movie'
 import close from "../assets/svg/close.svg"
 
-const Movie = ({movieKey}) => {
+const Movies = ( )=> {
 
-    const { state:{ watching },dispatch } = useNFLXState()
-    const title = movies[movieKey]
-    const thumb = files[`${movieKey}Thumb`]
-    const video = files[movieKey]
-    const idx = Object.keys(movies).indexOf(movieKey)
-    const offsetHeight = 40
-    const offset = offsets[idx] * offsetHeight
+    const { state:{ watching,moviesAreVisible }, dispatch } = useNFLXState()
+    const [show,setShow] = useState(false)
+    const [loaded,setLoaded] = useState(false)
+    const moviesRef = useRef(null)
     const isWatching = watching >= 0
-    const currentIsSelected = watching !== null && watching === idx
-    const style = {
-        transform:`translateY(${offset}px)`
-    }
-    
-    return (
-        <article
-            style={isWatching?null:style}
-            className={currentIsSelected ? "watching" : ""}
-            onClick={()=>dispatch({type:"SET_WATCHING",payload:idx})}
-        >
-            <video
-                src={video}
-                autoPlay muted loop
-                />
-            <img src={thumb} />
-            <h2 style={{transform:`translateY(${-offset}px)`}}>{title}</h2>
-        </article>
-    )
-}
+    const threshold = .3
 
-const Movies = ()=>{
+    const observerOptions = { threshold }
     
-    const { state:{ watching }, dispatch } = useNFLXState()
-    const isWatching = watching >= 0
-    const noScrollOnWatch = ()=>{
-        const body = document.documentElement
-        if(isWatching) body.classList.add("noScroll")
-        else body.classList.remove("noScroll")
-    }
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            entries => {
+              entries.forEach(entry => {
+                if (entry.intersectionRatio >= threshold)dispatch({type:"MOVIES_ARE_VISIBLE",payload:true})
+                else dispatch({type:"MOVIES_ARE_VISIBLE",payload:false})
+              })
+            },observerOptions
+          )
+      
+          if (moviesRef.current) observer.observe(moviesRef.current)
+      return ()=>{
+        if (moviesRef.current)observer.unobserve(moviesRef.current)
+      }
+    }, [])
+  
 
-    useEffect(noScrollOnWatch,[isWatching])
+
+
+    useEffect(() => {
+        if(moviesRef)moviesRef.current = moviesRef.current
+      },[moviesRef])
+
+    let clear
+    useEffect(() => {
+        if(moviesAreVisible && !show) {
+            setShow(true)
+            clear = setTimeout(()=>{
+                console.log("heyy")
+                setLoaded(true)
+            },2000)
+        }
+        
+      },[moviesAreVisible,show])
+
+      useEffect(()=>{
+        return ()=> clearTimeout(clear)
+      },[])
+
     return(
-        <section className={`Movies ${isWatching?"watching":""}`}>
-
+        <section
+            ref={moviesRef}
+            className={`Movies ${isWatching?"watching":""} ${show?"show":""} ${loaded?"loaded":""}`}
+        >
             {isWatching && (
                 <button
                     className="closeMovie"

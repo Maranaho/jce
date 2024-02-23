@@ -6,10 +6,6 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 17px;
-  scroll-behavior: smooth;
-}
-body.noScroll {
-  overflow: hidden;
 }
 
 button {
@@ -24,8 +20,8 @@ button {
 }
 
 .riveComponent {
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
 }
 
 .Header {
@@ -36,7 +32,7 @@ button {
 }
 
 .TopNav {
-  width: 1000px;
+  width: 1100px;
   padding-top: 30px;
   display: flex;
   justify-content: space-between;
@@ -83,7 +79,7 @@ button {
 }
 
 .MotionTech {
-  width: 1000px;
+  width: 1100px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -107,10 +103,19 @@ button {
   height: 100vh;
   display: flex;
   position: relative;
-  align-items: center;
   box-sizing: border-box;
   justify-content: center;
-  border-top: 6px solid #0E0D11;
+  border-top: 6px solid #211f27;
+  transition: 0.7s cubic-bezier(0.61, 0, 0.04, 1);
+}
+.Movies:not(.watching) {
+  padding-top: calc((100vh - 600px) / 2);
+}
+.Movies.show > article {
+  height: 600px;
+}
+.Movies.loaded > article {
+  transition: 0.7s cubic-bezier(0.61, 0, 0.04, 1);
 }
 .Movies.watching > article.watching {
   height: 100vh;
@@ -128,11 +133,10 @@ button {
   border-width: 0;
   opacity: 0;
 }
-.Movies:not(.watching) article:not(.shrunk):not(.active):hover {
+.Movies:not(.watching):not(.slow) article:not(.shrunk):not(.active):hover {
   width: 500px;
-  transition-delay: 0s;
 }
-.Movies:not(.watching) article:not(.shrunk):not(.active):hover img, .Movies:not(.watching) article:not(.shrunk):not(.active):hover h2 {
+.Movies:not(.watching):not(.slow) article:not(.shrunk):not(.active):hover img, .Movies:not(.watching):not(.slow) article:not(.shrunk):not(.active):hover h2 {
   opacity: 0;
 }
 .Movies .closeMovie {
@@ -145,14 +149,14 @@ button {
 }
 .Movies > article {
   width: 120px;
-  height: 600px;
+  height: 0;
   overflow: hidden;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  transition: 0.9s cubic-bezier(0.61, 0, 0.02, 1.17) 0.7s;
+  transition: 2s cubic-bezier(0.61, 0, 0.04, 1);
   cursor: pointer;
 }
 .Movies > article:not(:last-child) {
@@ -177,9 +181,8 @@ button {
   opacity: 1;
   transition: 1.5s ease;
   height: 600px;
-  filter: brightness(0.6);
 }
 .Movies > article video {
-  transition: 0.9s cubic-bezier(0.61, 0, 0.02, 1.17);
+  transition: 0.9s cubic-bezier(0.61, 0, 0.04, 1);
   width: 100vw;
 }/*# sourceMappingURL=index.css.map */

@@ -7,14 +7,15 @@ $nflxActive: #b30912;
 
 
 //Globals
-$contentWidth: 1000px;
+$contentWidth: 1100px;
 $txt: #fff;
 $bgColor: #000;
-$motionCurve: cubic-bezier(0.61, 0, 0.02, 1.17);
+$motionCurve: cubic-bezier(0.61, 0, 0.04, 1);
 
 //Sections
-$sectionBorderColor: #0E0D11;
+$sectionBorderColor: #211f27;
 $sectionBorderWidth: 6px;
+$movieHeight: 600px;
 
 //Typography
 $fontFamily: "Roboto", sans-serif;
@@ -26,7 +27,7 @@ $bold: 700;
 $heavy: 900;
 
 //Animation
-$riveArtboardWidth:500px;
+$riveArtboardWidth:600px;
 
 //Buttons
 $secondaryBtnStroke: #5A5A5A;
@@ -43,8 +44,6 @@ body {
     font-family: $fontFamily;
     font-weight: $light;
     font-size: $fontSize;
-    scroll-behavior: smooth;
-    &.noScroll{ overflow: hidden }
 }
 
 button {cursor: pointer}
@@ -125,10 +124,13 @@ button {cursor: pointer}
     height: 100vh;
     display: flex;
     position: relative;
-    align-items: center;
     box-sizing: border-box;
     justify-content: center;
     border-top: $sectionBorderWidth solid $sectionBorderColor;
+    transition: .7s $motionCurve;
+    &:not(.watching){ padding-top: calc((100vh - $movieHeight) / 2) }
+    &.show  > article { height: $movieHeight }
+    &.loaded > article { transition: .7s $motionCurve }
 
     &.watching {
         > article {
@@ -150,9 +152,8 @@ button {cursor: pointer}
             }
         }
     }
-    &:not(.watching) article:not(.shrunk):not(.active):hover{
+    &:not(.watching):not(.slow) article:not(.shrunk):not(.active):hover{
         width: 500px;
-        transition-delay: 0s;
         img,h2{opacity: 0}
     }
     .closeMovie {
@@ -165,14 +166,14 @@ button {cursor: pointer}
     }
     > article {
         width: 120px;
-        height: 600px;
+        height: 0;
         overflow: hidden;
         position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 4px;
-        transition: .9s $motionCurve .7s;
+        transition: 2s $motionCurve;
         cursor: pointer;
         &:not(:last-child){border-right: 3px solid $bgColor}
         img, h2, video{ position: absolute }
@@ -192,7 +193,6 @@ button {cursor: pointer}
             opacity: 1;
             transition: 1.5s ease;
             height: 600px;
-            filter: brightness(.6);
         }
         video {
             transition: .9s $motionCurve;
