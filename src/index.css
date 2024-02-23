@@ -143,7 +143,16 @@ button {
   opacity: 0;
 }
 .Movies:not(.watching):not(.loading) article:not(.shrunk):not(.active):hover .Details {
+  width: 100%;
+}
+.Movies:not(.watching):not(.loading) article:not(.shrunk):not(.active):hover .Details .special {
+  left: 358px;
+}
+.Movies:not(.watching):not(.loading) article:not(.shrunk):not(.active):hover .Details h3, .Movies:not(.watching):not(.loading) article:not(.shrunk):not(.active):hover .Details .meta, .Movies:not(.watching):not(.loading) article:not(.shrunk):not(.active):hover .Details .actions {
   opacity: 1;
+}
+.Movies:not(.watching):not(.loading) article:not(.shrunk):not(.active):hover .Details .info {
+  background: rgba(0, 0, 0, 0.8);
 }
 .Movies .closeMovie {
   position: absolute;
@@ -196,8 +205,8 @@ button {
 .special {
   background: #E50914;
   position: absolute;
-  bottom: 32px;
-  right: 19px;
+  bottom: 20px;
+  left: 0px;
   z-index: 3;
   font-weight: 500;
   font-size: 0.6em;
@@ -207,29 +216,38 @@ button {
   padding: 4px 7px;
   box-sizing: border-box;
   width: 82px;
+  transition: 0.7s cubic-bezier(0.61, 0, 0.04, 1);
 }
 
 .Details {
   position: absolute;
   inset: 0;
-  opacity: 0;
   transition: 0.7s cubic-bezier(0.61, 0, 0.04, 1);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  width: 500px;
+  width: 340px;
+}
+.Details .meta, .Details .actions {
+  transition: 0.7s cubic-bezier(0.61, 0, 0.04, 1);
+  opacity: 0;
 }
 .Details h3 {
   font-weight: 700;
   font-size: 3em;
   padding: 40px 30% 40px 40px;
   margin: 0;
+  opacity: 0;
+  transition: 0.7s cubic-bezier(0.61, 0, 0.04, 1);
+  width: 300px;
 }
 .Details .info {
-  background: rgba(0, 0, 0, 0.8);
+  position: relative;
+  background: rgba(0, 0, 0, 0);
   padding: 20px;
   margin: 20px;
   border-radius: 15px;
+  transition: 0.7s cubic-bezier(0.61, 0, 0.04, 1);
 }
 .Details .actions {
   display: flex;

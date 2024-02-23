@@ -161,7 +161,12 @@ button {cursor: pointer}
     &:not(.watching):not(.loading) article:not(.shrunk):not(.active):hover{
         width: $videoOpen;
         .thumb,h2{opacity: 0}
-        .Details {opacity: 1}
+        .Details {
+            width: 100%;
+            .special { left: calc($videoOpen - 142px) }
+            h3,.meta,.actions { opacity: 1 }
+            .info{background: rgba(0,0,0,.8)}
+        }
     }
     .closeMovie {
         position: absolute;
@@ -211,8 +216,8 @@ button {cursor: pointer}
 .special {
     background: $nflx;
     position: absolute;
-    bottom: 32px;
-    right: 19px;
+    bottom: 20px;
+    left: 0px;
     z-index: 3;
     font-weight: $medium;
     font-size: .6em;
@@ -222,29 +227,39 @@ button {cursor: pointer}
     padding: 4px 7px;
     box-sizing: border-box;
     width: 82px;
+    transition: .7s $motionCurve;
 }
 
 .Details {
     position: absolute;
     inset: 0;
-    opacity: 0;
     transition: .7s $motionCurve;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    width: $videoOpen;
+    width: 340px;
+    
+    .meta,.actions {
+        transition: .7s $motionCurve;
+        opacity: 0;
+    }
 
     h3 {
         font-weight: $bold;
         font-size: 3em;
         padding: 40px 30% 40px 40px;
         margin: 0;
+        opacity: 0;
+        transition: .7s $motionCurve;
+        width: 300px;
     }
     .info{
-        background: rgba(0,0,0,.8);
+        position: relative;
+        background: rgba(0,0,0,0);
         padding: 20px;
         margin: 20px;
         border-radius: 15px;
+        transition: .7s $motionCurve;
     }
     .actions{
         display: flex;

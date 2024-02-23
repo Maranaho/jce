@@ -11,11 +11,20 @@ const Details = ({movieKey}) => {
     const numberOfadj = 3
     const title = movies[movieKey]
 
+    const isClassic = movieKey === "boyznthehood"
+    const lastChance = movieKey === "ghostintheshell"
+    const newSeason = movieKey === "lockeandkey"
+
     return (
-        <article className="Details">
+        <div className="Details">
             
             <h3>{title}</h3>
             <div className="info">
+
+                {isClassic && <span className="special">Classic</span>}
+                {lastChance && <span className="special">Last chance</span>}
+                {newSeason && <span className="special">New season</span>}
+                
                 <div className="actions">
                     <div>
                         <img src={playdark} alt="playdark"/>
@@ -34,7 +43,7 @@ const Details = ({movieKey}) => {
                     </div>
                 </div>
             </div>
-        </article>
+        </div>
     )
 }
 

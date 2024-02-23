@@ -21,10 +21,7 @@ const Movie = ({movieKey}) => {
         transitionDelay: `${loaded?"0":currentDelay}s`
     }
     
-    const isClassic = movieKey === "boyznthehood"
-    const lastChance = movieKey === "ghostintheshell"
-    const newSeason = movieKey === "lockeandkey"
-    
+
     return (
         <article
             style={isWatching?null:style}
@@ -32,9 +29,6 @@ const Movie = ({movieKey}) => {
             onClick={()=>dispatch({type:"SET_WATCHING",payload:idx})}
         >
 
-            {isClassic && <span className="special">Classic</span>}
-            {lastChance && <span className="special">Last chance</span>}
-            {newSeason && <span className="special">New season</span>}
             <video
                 src={video}
                 autoPlay muted loop
