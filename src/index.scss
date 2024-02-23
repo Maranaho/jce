@@ -4,6 +4,7 @@
 $nflx: #E50914;
 $nflxHover: #ca121b;
 $nflxActive: #b30912;
+$recommended: #43C563;
 
 
 //Globals
@@ -16,6 +17,7 @@ $motionCurve: cubic-bezier(0.61, 0, 0.04, 1);
 $sectionBorderColor: #08070a;
 $sectionBorderWidth: 6px;
 $movieHeight: 600px;
+$videoOpen: 500px;
 
 //Typography
 $fontFamily: "Roboto", sans-serif;
@@ -128,8 +130,12 @@ button {cursor: pointer}
     justify-content: center;
     border-top: $sectionBorderWidth solid $sectionBorderColor;
     transition: .7s $motionCurve;
+
     &:not(.watching){ padding-top: calc((100vh - $movieHeight) / 2) }
-    &.show  > article { height: $movieHeight }
+    &.show  > article {
+        height: $movieHeight;
+        .thumb { height: 600px}
+    }
     &.loaded > article { transition: .7s $motionCurve }
 
     &.watching {
@@ -140,7 +146,7 @@ button {cursor: pointer}
                 video {
                     width: 125vw;
                 }
-                img,h2{
+                .thumb,h2{
                     opacity: 0;
                 }
             }
@@ -152,9 +158,10 @@ button {cursor: pointer}
             }
         }
     }
-    &:not(.watching):not(.slow) article:not(.shrunk):not(.active):hover{
-        width: 500px;
-        img,h2{opacity: 0}
+    &:not(.watching):not(.loading) article:not(.shrunk):not(.active):hover{
+        width: $videoOpen;
+        .thumb,h2{opacity: 0}
+        .Details {opacity: 1}
     }
     .closeMovie {
         position: absolute;
@@ -176,12 +183,12 @@ button {cursor: pointer}
         transition: 2s $motionCurve;
         cursor: pointer;
         &:not(:last-child){border-right: 3px solid $bgColor}
-        img, h2, video{ position: absolute }
+        .thumb, h2, video{ position: absolute }
         h2 {
             transition: .7s ease;
             font-size: .9em;
             opacity: .8;
-            font-weight: $regular;
+            font-weight: $medium;
             text-align: center;
             width: 120px;
             box-sizing: border-box;
@@ -189,14 +196,97 @@ button {cursor: pointer}
             letter-spacing: 1px;
             line-height: 1.5em;
         }
-        img {
+        .thumb {
             opacity: 1;
-            transition: 1.5s ease;
-            height: 600px;
+            transition: 2s  $motionCurve;
+            height: 1500px;
         }
         video {
             transition: .9s $motionCurve;
             width: 100vw;
+        }
+    }
+}
+
+.special {
+    background: $nflx;
+    position: absolute;
+    bottom: 32px;
+    right: 19px;
+    z-index: 3;
+    font-weight: $medium;
+    font-size: .6em;
+    border-radius: 3px;
+    justify-content: center;
+    display: flex;
+    padding: 4px 7px;
+    box-sizing: border-box;
+    width: 82px;
+}
+
+.Details {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: .7s $motionCurve;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: $videoOpen;
+
+    h3 {
+        font-weight: $bold;
+        font-size: 3em;
+        padding: 40px 30% 40px 40px;
+        margin: 0;
+    }
+    .info{
+        background: rgba(0,0,0,.8);
+        padding: 20px;
+        margin: 20px;
+        border-radius: 15px;
+    }
+    .actions{
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        img {
+            width: 26px;
+            &:hover{ opacity: .7}
+            &:not(:last-child){ margin-right: 7px}
+        }
+    }
+    .meta {
+        font-size: .9em;
+        .recommended {
+            font-weight: $bold;
+            color: $recommended;
+            margin-right: 10px;
+        }
+        
+        > div {
+            display: flex;
+            align-items: center;
+        }
+        .adjectives {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            span {
+                display: flex;
+                align-items: center;
+                font-weight: $medium;
+                opacity: .7;;
+                &:not(:last-child):after {
+                    content:"";
+                    display: block;
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 10px;
+                    background: #d8d8d86c;
+                    margin: 0 10px;
+                }
+            }
         }
     }
 }

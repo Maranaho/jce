@@ -114,6 +114,9 @@ button {
 .Movies.show > article {
   height: 600px;
 }
+.Movies.show > article .thumb {
+  height: 600px;
+}
 .Movies.loaded > article {
   transition: 0.7s cubic-bezier(0.61, 0, 0.04, 1);
 }
@@ -124,7 +127,7 @@ button {
 .Movies.watching > article.watching video {
   width: 125vw;
 }
-.Movies.watching > article.watching img, .Movies.watching > article.watching h2 {
+.Movies.watching > article.watching .thumb, .Movies.watching > article.watching h2 {
   opacity: 0;
 }
 .Movies.watching > article:not(.watching) {
@@ -133,11 +136,14 @@ button {
   border-width: 0;
   opacity: 0;
 }
-.Movies:not(.watching):not(.slow) article:not(.shrunk):not(.active):hover {
+.Movies:not(.watching):not(.loading) article:not(.shrunk):not(.active):hover {
   width: 500px;
 }
-.Movies:not(.watching):not(.slow) article:not(.shrunk):not(.active):hover img, .Movies:not(.watching):not(.slow) article:not(.shrunk):not(.active):hover h2 {
+.Movies:not(.watching):not(.loading) article:not(.shrunk):not(.active):hover .thumb, .Movies:not(.watching):not(.loading) article:not(.shrunk):not(.active):hover h2 {
   opacity: 0;
+}
+.Movies:not(.watching):not(.loading) article:not(.shrunk):not(.active):hover .Details {
+  opacity: 1;
 }
 .Movies .closeMovie {
   position: absolute;
@@ -162,14 +168,14 @@ button {
 .Movies > article:not(:last-child) {
   border-right: 3px solid #000;
 }
-.Movies > article img, .Movies > article h2, .Movies > article video {
+.Movies > article .thumb, .Movies > article h2, .Movies > article video {
   position: absolute;
 }
 .Movies > article h2 {
   transition: 0.7s ease;
   font-size: 0.9em;
   opacity: 0.8;
-  font-weight: 400;
+  font-weight: 500;
   text-align: center;
   width: 120px;
   box-sizing: border-box;
@@ -177,12 +183,97 @@ button {
   letter-spacing: 1px;
   line-height: 1.5em;
 }
-.Movies > article img {
+.Movies > article .thumb {
   opacity: 1;
-  transition: 1.5s ease;
-  height: 600px;
+  transition: 2s cubic-bezier(0.61, 0, 0.04, 1);
+  height: 1500px;
 }
 .Movies > article video {
   transition: 0.9s cubic-bezier(0.61, 0, 0.04, 1);
   width: 100vw;
+}
+
+.special {
+  background: #E50914;
+  position: absolute;
+  bottom: 32px;
+  right: 19px;
+  z-index: 3;
+  font-weight: 500;
+  font-size: 0.6em;
+  border-radius: 3px;
+  justify-content: center;
+  display: flex;
+  padding: 4px 7px;
+  box-sizing: border-box;
+  width: 82px;
+}
+
+.Details {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: 0.7s cubic-bezier(0.61, 0, 0.04, 1);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 500px;
+}
+.Details h3 {
+  font-weight: 700;
+  font-size: 3em;
+  padding: 40px 30% 40px 40px;
+  margin: 0;
+}
+.Details .info {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 15px;
+}
+.Details .actions {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+.Details .actions img {
+  width: 26px;
+}
+.Details .actions img:hover {
+  opacity: 0.7;
+}
+.Details .actions img:not(:last-child) {
+  margin-right: 7px;
+}
+.Details .meta {
+  font-size: 0.9em;
+}
+.Details .meta .recommended {
+  font-weight: 700;
+  color: #43C563;
+  margin-right: 10px;
+}
+.Details .meta > div {
+  display: flex;
+  align-items: center;
+}
+.Details .meta .adjectives {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+.Details .meta .adjectives span {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  opacity: 0.7;
+}
+.Details .meta .adjectives span:not(:last-child):after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 10px;
+  background: rgba(216, 216, 216, 0.4235294118);
+  margin: 0 10px;
 }/*# sourceMappingURL=index.css.map */

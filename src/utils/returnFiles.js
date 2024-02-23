@@ -70,4 +70,21 @@ const files = {
 }
 
 const offsets = [ 0, 1, 2 , -1, 0, 1, -.5, 0, 2 ]
-export { files, movies,offsets  }
+const adjectives = [
+    "captivating",
+    "intriguing",
+    "engaging",
+    "suspenseful",
+    "entertaining",
+    "provoking",
+    "gripping",
+    "compelling",
+    "exciting",
+    "addictive",
+    "dynamic",
+    "innovative",
+    "refreshing",
+    "provocative",
+    "immersive"
+  ]
+export { files, movies,offsets,adjectives  }

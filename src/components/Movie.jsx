@@ -1,9 +1,10 @@
 import { useNFLXState } from '../context'
 import { files, movies,offsets } from "../utils/returnFiles"
+import Details from './Details'
 
 const Movie = ({movieKey}) => {
 
-    const { state:{ watching },dispatch } = useNFLXState()
+    const { state:{ watching,loaded },dispatch } = useNFLXState()
 
     const title = movies[movieKey]
     const thumb = files[`${movieKey}Thumb`]
@@ -13,9 +14,16 @@ const Movie = ({movieKey}) => {
     const offset = offsets[idx] * offsetHeight
     const isWatching = watching >= 0
     const currentIsSelected = watching !== null && watching === idx
+    const delay = .1
+    const currentDelay =  idx * delay
     const style = {
-        transform:`translateY(${offset}px)`
+        transform:`translateY(${offset}px)`,
+        transitionDelay: `${loaded?"0":currentDelay}s`
     }
+    
+    const isClassic = movieKey === "boyznthehood"
+    const lastChance = movieKey === "ghostintheshell"
+    const newSeason = movieKey === "lockeandkey"
     
     return (
         <article
@@ -23,12 +31,21 @@ const Movie = ({movieKey}) => {
             className={currentIsSelected ? "watching" : ""}
             onClick={()=>dispatch({type:"SET_WATCHING",payload:idx})}
         >
+
+            {isClassic && <span className="special">Classic</span>}
+            {lastChance && <span className="special">Last chance</span>}
+            {newSeason && <span className="special">New season</span>}
             <video
                 src={video}
                 autoPlay muted loop
                 />
-            <img src={thumb} />
+            <img
+                src={thumb}
+                className="thumb"
+                style={{ transitionDelay: `${loaded?"0":currentDelay}s`}}
+            />
             <h2 style={{transform:`translateY(${-offset}px)`}}>{title}</h2>
+            <Details movieKey={movieKey}/>
         </article>
     )
 }

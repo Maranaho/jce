@@ -6,12 +6,12 @@ import close from "../assets/svg/close.svg"
 
 const Movies = ( )=> {
 
-    const { state:{ watching,moviesAreVisible }, dispatch } = useNFLXState()
+    const { state:{ watching,moviesAreVisible,loaded }, dispatch } = useNFLXState()
     const [show,setShow] = useState(false)
-    const [loaded,setLoaded] = useState(false)
     const moviesRef = useRef(null)
     const isWatching = watching >= 0
     const threshold = .3
+    const timeToLoad = 2000
 
     const observerOptions = { threshold }
     
@@ -41,8 +41,8 @@ const Movies = ( )=> {
         if(moviesAreVisible && !show) {
             setShow(true)
             clear = setTimeout(()=>{
-                setLoaded(true)
-            },2000)
+                dispatch({type:"SET_LOADED",payload:true})
+            },timeToLoad)
         }
         
       },[moviesAreVisible,show])
@@ -54,7 +54,7 @@ const Movies = ( )=> {
     return(
         <section
             ref={moviesRef}
-            className={`Movies ${isWatching?"watching":""} ${show?"show":""} ${loaded?"loaded":""}`}
+            className={`Movies ${isWatching?"watching":""} ${show?"show":""} ${loaded?"loaded":"loading"}`}
         >
             {isWatching && (
                 <button
