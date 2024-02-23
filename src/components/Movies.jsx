@@ -32,8 +32,6 @@ const Movies = ( )=> {
     }, [])
   
 
-
-
     useEffect(() => {
         if(moviesRef)moviesRef.current = moviesRef.current
       },[moviesRef])
@@ -43,7 +41,6 @@ const Movies = ( )=> {
         if(moviesAreVisible && !show) {
             setShow(true)
             clear = setTimeout(()=>{
-                console.log("heyy")
                 setLoaded(true)
             },2000)
         }

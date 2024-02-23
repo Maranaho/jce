@@ -105,7 +105,7 @@ button {
   position: relative;
   box-sizing: border-box;
   justify-content: center;
-  border-top: 6px solid #211f27;
+  border-top: 6px solid #08070a;
   transition: 0.7s cubic-bezier(0.61, 0, 0.04, 1);
 }
 .Movies:not(.watching) {
