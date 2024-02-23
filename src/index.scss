@@ -308,7 +308,9 @@ button {cursor: pointer}
 
 .jce {
     background: url("./assets/svg/jce.svg") center center no-repeat;
-    background-size: 600px auto;
+    background-size: 600px 600px;
+    width: $riveArtboardWidth;
+    height: $riveArtboardWidth;
     display: flex;
     justify-content: center;
     align-items: center;
