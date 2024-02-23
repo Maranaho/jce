@@ -294,4 +294,12 @@ button {
   border-radius: 10px;
   background: rgba(216, 216, 216, 0.4235294118);
   margin: 0 10px;
+}
+
+.jce {
+  background: url("./assets/svg/jce.svg") center center no-repeat;
+  background-size: 600px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=index.css.map */

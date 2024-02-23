@@ -32,6 +32,6 @@ const Anim = ()=>{
 
     useEffect(setRiveState,[likelyhood])
 
-    return <article><RiveComponent className="riveComponent"/></article>
+    return <article className="jce"><RiveComponent className="riveComponent"/></article>
 }
 export default Anim

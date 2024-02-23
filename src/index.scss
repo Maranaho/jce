@@ -305,3 +305,11 @@ button {cursor: pointer}
         }
     }
 }
+
+.jce {
+    background: url("./assets/svg/jce.svg") center center no-repeat;
+    background-size: 600px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
