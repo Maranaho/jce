@@ -123,15 +123,16 @@ button {cursor: pointer}
 }
 
 .Movies {
-    height: 100vh;
+    height: calc(100vh - 150px);
     display: flex;
     position: relative;
     box-sizing: border-box;
     justify-content: center;
     border-top: $sectionBorderWidth solid $sectionBorderColor;
     transition: .7s $motionCurve;
+    background: linear-gradient(#0d0d0d,#000);
 
-    &:not(.watching){ padding-top: calc((100vh - $movieHeight) / 2) }
+    &:not(.watching){ padding-top: calc((calc(100vh - 150px) - $movieHeight) / 2) }
     &.show  > article {
         height: $movieHeight;
         .thumb { height: 600px}
@@ -314,4 +315,11 @@ button {cursor: pointer}
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.lazy {
+    background: url("./assets/images/lazy-screen.jpg");
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
 }

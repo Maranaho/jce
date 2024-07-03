@@ -5,7 +5,7 @@ import Movies from './Movies'
 const Demo = ()=>(
     <div className="Demo">
         <Header/>
-        <MotionTech/>
+        {/* <MotionTech/> */}
         <Movies/>
     </div>
 )

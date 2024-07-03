@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center;
+}
+button {
+    cursor: pointer;
+    padding: 15px;
+    width: 150px;
+}
+
+.randomShape {
+    width: 100px;
+    height: 100px;
+    background: rgb(148, 236, 148);
+    margin-top: 10px;
+    transition: .7s cubic-bezier(0.53,-0.01, 0.06, 1);
+}
+
+.Fun {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+}

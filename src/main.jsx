@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { NFLXStateProvider } from './context'
 import './index.css'
 import App from './App'
-
+console.clear()
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <NFLXStateProvider>
